@@ -1,0 +1,713 @@
+{
+  "total_revenue": 148274622.90646714,
+  "total_transactions": 53899,
+  "unique_active_users": 13888,
+  "avg_transaction_val": 2750.97168605108,
+  "min_date": "2023-01-01",
+  "max_date": "2023-12-31",
+  "monthly": [
+    {
+      "Month": "2023-01",
+      "revenue": 12841761.37826741,
+      "transactions": 4635,
+      "active_users": 3960,
+      "avg_order": 2770.606554103001
+    },
+    {
+      "Month": "2023-02",
+      "revenue": 11436130.89548016,
+      "transactions": 4139,
+      "active_users": 3574,
+      "avg_order": 2763.0178534622273
+    },
+    {
+      "Month": "2023-03",
+      "revenue": 12348931.83915407,
+      "transactions": 4565,
+      "active_users": 3880,
+      "avg_order": 2705.132933001987
+    },
+    {
+      "Month": "2023-04",
+      "revenue": 12015376.18868366,
+      "transactions": 4388,
+      "active_users": 3756,
+      "avg_order": 2738.2352298732135
+    },
+    {
+      "Month": "2023-05",
+      "revenue": 12333644.452119758,
+      "transactions": 4570,
+      "active_users": 3916,
+      "avg_order": 2698.828107684849
+    },
+    {
+      "Month": "2023-06",
+      "revenue": 12084355.81520063,
+      "transactions": 4338,
+      "active_users": 3757,
+      "avg_order": 2785.6975138775083
+    },
+    {
+      "Month": "2023-07",
+      "revenue": 12444163.579437405,
+      "transactions": 4514,
+      "active_users": 3848,
+      "avg_order": 2756.7929950016405
+    },
+    {
+      "Month": "2023-08",
+      "revenue": 12812730.663360089,
+      "transactions": 4627,
+      "active_users": 3980,
+      "avg_order": 2769.122684970843
+    },
+    {
+      "Month": "2023-09",
+      "revenue": 12228952.048006931,
+      "transactions": 4401,
+      "active_users": 3809,
+      "avg_order": 2778.6757664182983
+    },
+    {
+      "Month": "2023-10",
+      "revenue": 12501330.356144924,
+      "transactions": 4528,
+      "active_users": 3842,
+      "avg_order": 2760.8945132828894
+    },
+    {
+      "Month": "2023-11",
+      "revenue": 12588223.09102594,
+      "transactions": 4578,
+      "active_users": 3928,
+      "avg_order": 2749.7210771135733
+    },
+    {
+      "Month": "2023-12",
+      "revenue": 12639022.599586187,
+      "transactions": 4616,
+      "active_users": 3915,
+      "avg_order": 2738.089817934616
+    }
+  ],
+  "quarterly": [
+    {
+      "Quarter": "Q1",
+      "revenue": 36626824.112901635,
+      "transactions": 13339,
+      "active_users": 8629,
+      "avg_order": 2745.8448244172455
+    },
+    {
+      "Quarter": "Q2",
+      "revenue": 36433376.45600405,
+      "transactions": 13296,
+      "active_users": 8628,
+      "avg_order": 2740.1757262337587
+    },
+    {
+      "Quarter": "Q3",
+      "revenue": 37485846.29080442,
+      "transactions": 13542,
+      "active_users": 8715,
+      "avg_order": 2768.1174339687213
+    },
+    {
+      "Quarter": "Q4",
+      "revenue": 37728576.04675705,
+      "transactions": 13722,
+      "active_users": 8753,
+      "avg_order": 2749.495412239983
+    }
+  ],
+  "top5_overall": [
+    {
+      "user_id": "U-06582",
+      "name": "User_U-06582",
+      "USD_Revenue": 40050.988262065366
+    },
+    {
+      "user_id": "U-23313",
+      "name": "User_U-23313",
+      "USD_Revenue": 39555.80662867369
+    },
+    {
+      "user_id": "U-03805",
+      "name": "User_U-03805",
+      "USD_Revenue": 39529.94508491103
+    },
+    {
+      "user_id": "U-20018",
+      "name": "User_U-20018",
+      "USD_Revenue": 38649.96524238548
+    },
+    {
+      "user_id": "U-06489",
+      "name": "User_U-06489",
+      "USD_Revenue": 38629.14214553248
+    }
+  ],
+  "top5_by_q": {
+    "Q1": [
+      {
+        "user_id": "U-11964",
+        "name": "User_U-11964",
+        "USD_Revenue": 21404.227650354536
+      },
+      {
+        "user_id": "U-00514",
+        "name": "User_U-00514",
+        "USD_Revenue": 21232.646379949445
+      },
+      {
+        "user_id": "U-16970",
+        "name": "User_U-16970",
+        "USD_Revenue": 20593.948047241138
+      },
+      {
+        "user_id": "U-07252",
+        "name": "User_U-07252",
+        "USD_Revenue": 18716.826092815056
+      },
+      {
+        "user_id": "U-12181",
+        "name": "User_U-12181",
+        "USD_Revenue": 18280.315004906155
+      }
+    ],
+    "Q2": [
+      {
+        "user_id": "U-20018",
+        "name": "User_U-20018",
+        "USD_Revenue": 30038.249457537968
+      },
+      {
+        "user_id": "U-20408",
+        "name": "User_U-20408",
+        "USD_Revenue": 22567.911305913207
+      },
+      {
+        "user_id": "U-06582",
+        "name": "User_U-06582",
+        "USD_Revenue": 20760.620737188583
+      },
+      {
+        "user_id": "U-12497",
+        "name": "User_U-12497",
+        "USD_Revenue": 20615.515108347405
+      },
+      {
+        "user_id": "U-15722",
+        "name": "User_U-15722",
+        "USD_Revenue": 18781.619742242765
+      }
+    ],
+    "Q3": [
+      {
+        "user_id": "U-09216",
+        "name": "User_U-09216",
+        "USD_Revenue": 23668.672797965453
+      },
+      {
+        "user_id": "U-19620",
+        "name": "User_U-19620",
+        "USD_Revenue": 20560.465471847237
+      },
+      {
+        "user_id": "U-17258",
+        "name": "User_U-17258",
+        "USD_Revenue": 19189.745489104473
+      },
+      {
+        "user_id": "U-04305",
+        "name": "User_U-04305",
+        "USD_Revenue": 18958.210862612294
+      },
+      {
+        "user_id": "U-03583",
+        "name": "User_U-03583",
+        "USD_Revenue": 18719.41681035963
+      }
+    ],
+    "Q4": [
+      {
+        "user_id": "U-06563",
+        "name": "User_U-06563",
+        "USD_Revenue": 21434.99136420111
+      },
+      {
+        "user_id": "U-13953",
+        "name": "User_U-13953",
+        "USD_Revenue": 20724.190873415908
+      },
+      {
+        "user_id": "U-23313",
+        "name": "User_U-23313",
+        "USD_Revenue": 20547.96777893781
+      },
+      {
+        "user_id": "U-22018",
+        "name": "User_U-22018",
+        "USD_Revenue": 19859.48778213152
+      },
+      {
+        "user_id": "U-09237",
+        "name": "User_U-09237",
+        "USD_Revenue": 19733.524472586036
+      }
+    ]
+  },
+  "sample_records": [
+    {
+      "Date": "2023-03-15",
+      "user_id": "U-19484",
+      "name": "User_U-19484",
+      "product_id": "PRD-874",
+      "eur_val": 3404.44,
+      "EUR_to_USD": 1.1782321827907003,
+      "USD_Revenue": 4011.220772379972
+    },
+    {
+      "Date": "2023-10-21",
+      "user_id": "U-15882",
+      "name": "User_U-15882",
+      "product_id": "PRD-284",
+      "eur_val": 164.08,
+      "EUR_to_USD": 1.0753499532670585,
+      "USD_Revenue": 176.44342033205896
+    },
+    {
+      "Date": "2023-01-10",
+      "user_id": "U-22781",
+      "name": "User_U-22781",
+      "product_id": "PRD-665",
+      "eur_val": 26.8,
+      "EUR_to_USD": 1.1271280021792984,
+      "USD_Revenue": 30.2070304584052
+    },
+    {
+      "Date": "2023-10-20",
+      "user_id": "U-22062",
+      "name": "User_U-22062",
+      "product_id": "PRD-363",
+      "eur_val": 48.63,
+      "EUR_to_USD": 1.0753499532670585,
+      "USD_Revenue": 52.29426822737706
+    },
+    {
+      "Date": "2023-12-02",
+      "user_id": "U-22146",
+      "name": "User_U-22146",
+      "product_id": "PRD-223",
+      "eur_val": 960.6,
+      "EUR_to_USD": 1.0661419144243944,
+      "USD_Revenue": 1024.1359229960733
+    },
+    {
+      "Date": "2023-03-21",
+      "user_id": "U-08211",
+      "name": "User_U-08211",
+      "product_id": "PRD-741",
+      "eur_val": 1129.34,
+      "EUR_to_USD": 1.0006215542699555,
+      "USD_Revenue": 1130.0419460992314
+    },
+    {
+      "Date": "2023-02-01",
+      "user_id": "U-12689",
+      "name": "User_U-12689",
+      "product_id": "PRD-223",
+      "eur_val": 3390.14,
+      "EUR_to_USD": 1.192613909225447,
+      "USD_Revenue": 4043.128118221557
+    },
+    {
+      "Date": "2023-07-18",
+      "user_id": "U-06991",
+      "name": "User_U-06991",
+      "product_id": "PRD-732",
+      "eur_val": 690.08,
+      "EUR_to_USD": 1.1029104359223,
+      "USD_Revenue": 761.0964336212609
+    },
+    {
+      "Date": "2023-02-06",
+      "user_id": "U-21283",
+      "name": "User_U-21283",
+      "product_id": "PRD-842",
+      "eur_val": 4097.27,
+      "EUR_to_USD": 1.1104431797502379,
+      "USD_Revenue": 4549.785527095258
+    },
+    {
+      "Date": "2023-08-17",
+      "user_id": "U-21759",
+      "name": "User_U-21759",
+      "product_id": "PRD-177",
+      "eur_val": 2877.31,
+      "EUR_to_USD": 1.0642348145370017,
+      "USD_Revenue": 3062.1334742154604
+    },
+    {
+      "Date": "2023-01-28",
+      "user_id": "U-15509",
+      "name": "User_U-15509",
+      "product_id": "PRD-116",
+      "eur_val": 2841.49,
+      "EUR_to_USD": 1.1055461294854934,
+      "USD_Revenue": 3141.3982714717345
+    },
+    {
+      "Date": "2023-12-05",
+      "user_id": "U-00311",
+      "name": "User_U-00311",
+      "product_id": "PRD-145",
+      "eur_val": 999.25,
+      "EUR_to_USD": 1.1206465727137813,
+      "USD_Revenue": 1119.806087784246
+    },
+    {
+      "Date": "2023-10-15",
+      "user_id": "U-13655",
+      "name": "User_U-13655",
+      "product_id": "PRD-426",
+      "eur_val": 4092.97,
+      "EUR_to_USD": 1.129415860324229,
+      "USD_Revenue": 4622.66523383126
+    },
+    {
+      "Date": "2023-02-21",
+      "user_id": "U-05713",
+      "name": "User_U-05713",
+      "product_id": "PRD-772",
+      "eur_val": 2885.83,
+      "EUR_to_USD": 1.0807458859791843,
+      "USD_Revenue": 3118.8489001353096
+    },
+    {
+      "Date": "2023-02-03",
+      "user_id": "U-08607",
+      "name": "User_U-08607",
+      "product_id": "PRD-471",
+      "eur_val": 4217.42,
+      "EUR_to_USD": 1.0993251387631033,
+      "USD_Revenue": 4636.315826722287
+    },
+    {
+      "Date": "2023-02-27",
+      "user_id": "U-24011",
+      "name": "User_U-24011",
+      "product_id": "PRD-633",
+      "eur_val": 4789.88,
+      "EUR_to_USD": 1.0845393812074393,
+      "USD_Revenue": 5194.81349125789
+    },
+    {
+      "Date": "2023-01-27",
+      "user_id": "U-01018",
+      "name": "User_U-01018",
+      "product_id": "PRD-360",
+      "eur_val": 2171.65,
+      "EUR_to_USD": 1.1055461294854934,
+      "USD_Revenue": 2400.859252097172
+    },
+    {
+      "Date": "2023-06-18",
+      "user_id": "U-16811",
+      "name": "User_U-16811",
+      "product_id": "PRD-558",
+      "eur_val": 2662.77,
+      "EUR_to_USD": 1.0877305941998565,
+      "USD_Revenue": 2896.376394317552
+    },
+    {
+      "Date": "2023-01-19",
+      "user_id": "U-12451",
+      "name": "User_U-12451",
+      "product_id": "PRD-691",
+      "eur_val": 4373.43,
+      "EUR_to_USD": 1.0545987962239396,
+      "USD_Revenue": 4612.214013369665
+    },
+    {
+      "Date": "2023-11-02",
+      "user_id": "U-17466",
+      "name": "User_U-17466",
+      "product_id": "PRD-508",
+      "eur_val": 2228.24,
+      "EUR_to_USD": 1.1058663691654391,
+      "USD_Revenue": 2464.135678429198
+    },
+    {
+      "Date": "2023-05-16",
+      "user_id": "U-00328",
+      "name": "User_U-00328",
+      "product_id": "PRD-940",
+      "eur_val": 1163.1,
+      "EUR_to_USD": 1.177496720250877,
+      "USD_Revenue": 1369.5464353237949
+    },
+    {
+      "Date": "2023-03-23",
+      "user_id": "U-00905",
+      "name": "User_U-00905",
+      "product_id": "PRD-195",
+      "eur_val": 887.83,
+      "EUR_to_USD": 1.1178556285755874,
+      "USD_Revenue": 992.4657627182638
+    },
+    {
+      "Date": "2023-06-08",
+      "user_id": "U-09074",
+      "name": "User_U-09074",
+      "product_id": "PRD-168",
+      "eur_val": 337.73,
+      "EUR_to_USD": 1.0404348251398676,
+      "USD_Revenue": 351.3860534944875
+    },
+    {
+      "Date": "2023-03-15",
+      "user_id": "U-11934",
+      "name": "User_U-11934",
+      "product_id": "PRD-782",
+      "eur_val": 370.56,
+      "EUR_to_USD": 1.1782321827907003,
+      "USD_Revenue": 436.60571765492193
+    },
+    {
+      "Date": "2023-11-15",
+      "user_id": "U-03051",
+      "name": "User_U-03051",
+      "product_id": "PRD-953",
+      "eur_val": 4352.54,
+      "EUR_to_USD": 1.1162083176244222,
+      "USD_Revenue": 4858.341350793003
+    },
+    {
+      "Date": "2023-12-06",
+      "user_id": "U-23200",
+      "name": "User_U-23200",
+      "product_id": "PRD-684",
+      "eur_val": 3999.0,
+      "EUR_to_USD": 1.0718137723598014,
+      "USD_Revenue": 4286.1832756668455
+    },
+    {
+      "Date": "2023-04-24",
+      "user_id": "U-23806",
+      "name": "User_U-23806",
+      "product_id": "PRD-221",
+      "eur_val": 3667.09,
+      "EUR_to_USD": 1.2231621056242643,
+      "USD_Revenue": 4485.445525913684
+    },
+    {
+      "Date": "2023-08-01",
+      "user_id": "U-00618",
+      "name": "User_U-00618",
+      "product_id": "PRD-529",
+      "eur_val": 4824.1,
+      "EUR_to_USD": 1.1477000881746602,
+      "USD_Revenue": 5536.619995363379
+    },
+    {
+      "Date": "2023-11-13",
+      "user_id": "U-12848",
+      "name": "User_U-12848",
+      "product_id": "PRD-210",
+      "eur_val": 2132.16,
+      "EUR_to_USD": 1.1340976485647483,
+      "USD_Revenue": 2418.0776423638135
+    },
+    {
+      "Date": "2023-06-10",
+      "user_id": "U-19055",
+      "name": "User_U-19055",
+      "product_id": "PRD-488",
+      "eur_val": 791.76,
+      "EUR_to_USD": 1.0404348251398676,
+      "USD_Revenue": 823.7746771527416
+    },
+    {
+      "Date": "2023-04-03",
+      "user_id": "U-10180",
+      "name": "User_U-10180",
+      "product_id": "PRD-538",
+      "eur_val": 4796.67,
+      "EUR_to_USD": 1.0648973453061326,
+      "USD_Revenue": 5107.961149309567
+    },
+    {
+      "Date": "2023-03-29",
+      "user_id": "U-15014",
+      "name": "User_U-15014",
+      "product_id": "PRD-334",
+      "eur_val": 2335.56,
+      "EUR_to_USD": 1.1164375554829844,
+      "USD_Revenue": 2607.506897083839
+    },
+    {
+      "Date": "2023-07-20",
+      "user_id": "U-22563",
+      "name": "User_U-22563",
+      "product_id": "PRD-628",
+      "eur_val": 1073.82,
+      "EUR_to_USD": 1.1178893680174142,
+      "USD_Revenue": 1200.4119611644596
+    },
+    {
+      "Date": "2023-10-13",
+      "user_id": "U-00882",
+      "name": "User_U-00882",
+      "product_id": "PRD-770",
+      "eur_val": 3004.28,
+      "EUR_to_USD": 1.2066516687328135,
+      "USD_Revenue": 3625.119475340617
+    },
+    {
+      "Date": "2023-08-14",
+      "user_id": "U-07598",
+      "name": "User_U-07598",
+      "product_id": "PRD-597",
+      "eur_val": 3944.83,
+      "EUR_to_USD": 1.1544475298483683,
+      "USD_Revenue": 4554.099249171739
+    },
+    {
+      "Date": "2023-04-18",
+      "user_id": "U-05646",
+      "name": "User_U-05646",
+      "product_id": "PRD-605",
+      "eur_val": 1483.13,
+      "EUR_to_USD": 1.108728890641592,
+      "USD_Revenue": 1644.3890795772645
+    },
+    {
+      "Date": "2023-10-08",
+      "user_id": "U-24234",
+      "name": "User_U-24234",
+      "product_id": "PRD-263",
+      "eur_val": 165.97,
+      "EUR_to_USD": 1.1056758672625624,
+      "USD_Revenue": 183.50902368956747
+    },
+    {
+      "Date": "2023-06-15",
+      "user_id": "U-12761",
+      "name": "User_U-12761",
+      "product_id": "PRD-519",
+      "eur_val": 4699.51,
+      "EUR_to_USD": 1.120639046346825,
+      "USD_Revenue": 5266.454404697368
+    },
+    {
+      "Date": "2023-12-11",
+      "user_id": "U-24399",
+      "name": "User_U-24399",
+      "product_id": "PRD-938",
+      "eur_val": 1879.68,
+      "EUR_to_USD": 1.076448084719084,
+      "USD_Revenue": 2023.377935884768
+    },
+    {
+      "Date": "2023-10-06",
+      "user_id": "U-17717",
+      "name": "User_U-17717",
+      "product_id": "PRD-919",
+      "eur_val": 4599.52,
+      "EUR_to_USD": 1.0699891561420602,
+      "USD_Revenue": 4921.436523458529
+    },
+    {
+      "Date": "2023-02-27",
+      "user_id": "U-04333",
+      "name": "User_U-04333",
+      "product_id": "PRD-492",
+      "eur_val": 11.81,
+      "EUR_to_USD": 1.0845393812074393,
+      "USD_Revenue": 12.808410092059859
+    },
+    {
+      "Date": "2023-02-07",
+      "user_id": "U-13899",
+      "name": "User_U-13899",
+      "product_id": "PRD-965",
+      "eur_val": 3188.85,
+      "EUR_to_USD": 1.0020164938060112,
+      "USD_Revenue": 3195.280296273299
+    },
+    {
+      "Date": "2023-12-22",
+      "user_id": "U-19243",
+      "name": "User_U-19243",
+      "product_id": "PRD-400",
+      "eur_val": 252.92,
+      "EUR_to_USD": 1.0990491896048658,
+      "USD_Revenue": 277.97152103486263
+    },
+    {
+      "Date": "2023-04-22",
+      "user_id": "U-05529",
+      "name": "User_U-05529",
+      "product_id": "PRD-885",
+      "eur_val": 4258.45,
+      "EUR_to_USD": 1.0962777042116918,
+      "USD_Revenue": 4668.443789500278
+    },
+    {
+      "Date": "2023-01-19",
+      "user_id": "U-11840",
+      "name": "User_U-11840",
+      "product_id": "PRD-278",
+      "eur_val": 1546.13,
+      "EUR_to_USD": 1.0545987962239396,
+      "USD_Revenue": 1630.5468368057197
+    },
+    {
+      "Date": "2023-10-06",
+      "user_id": "U-20082",
+      "name": "User_U-20082",
+      "product_id": "PRD-708",
+      "eur_val": 2210.18,
+      "EUR_to_USD": 1.0699891561420602,
+      "USD_Revenue": 2364.8686331220583
+    },
+    {
+      "Date": "2023-04-26",
+      "user_id": "U-09552",
+      "name": "User_U-09552",
+      "product_id": "PRD-469",
+      "eur_val": 4080.4,
+      "EUR_to_USD": 1.1150773671166807,
+      "USD_Revenue": 4549.961688782904
+    },
+    {
+      "Date": "2023-07-03",
+      "user_id": "U-09588",
+      "name": "User_U-09588",
+      "product_id": "PRD-636",
+      "eur_val": 794.77,
+      "EUR_to_USD": 1.1241236207621594,
+      "USD_Revenue": 893.4197300731414
+    },
+    {
+      "Date": "2023-01-29",
+      "user_id": "U-08995",
+      "name": "User_U-08995",
+      "product_id": "PRD-207",
+      "eur_val": 300.65,
+      "EUR_to_USD": 1.0699680655040598,
+      "USD_Revenue": 321.6858988937955
+    },
+    {
+      "Date": "2023-07-23",
+      "user_id": "U-12086",
+      "name": "User_U-12086",
+      "product_id": "PRD-989",
+      "eur_val": 2820.08,
+      "EUR_to_USD": 1.1526901026017453,
+      "USD_Revenue": 3250.67830454513
+    }
+  ]
+}

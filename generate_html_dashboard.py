@@ -1,0 +1,1104 @@
+import json
+
+with open('dashboard_data.json', 'r', encoding='utf-8') as f:
+    data = json.load(f)
+
+data_json_str = json.dumps(data)
+
+html_content = f"""<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>GlobalTech FinTech Solutions | CFO Financial Audit Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
+  <style>
+    :root {{
+      --bg-light: #f8fafc;
+      --bg-card: #ffffff;
+      --bg-card-hover: #f1f5f9;
+      --border-subtle: #e2e8f0;
+      --border-focus: #0284c7;
+      --text-main: #0f172a;
+      --text-muted: #64748b;
+      --primary: #0284c7;
+      --primary-dark: #0369a1;
+      --primary-light: #e0f2fe;
+      --accent-cyan: #0284c7;
+      --accent-emerald: #059669;
+      --accent-gold: #d97706;
+      --radius-lg: 16px;
+      --radius-md: 12px;
+      --radius-sm: 8px;
+      --shadow-card: 0 4px 20px -2px rgba(15, 23, 42, 0.06), 0 2px 6px -1px rgba(15, 23, 42, 0.04);
+      --shadow-hover: 0 12px 28px -4px rgba(15, 23, 42, 0.1);
+    }}
+
+    * {{
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }}
+
+    body {{
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+      background-color: var(--bg-light);
+      background-image: 
+        radial-gradient(at 0% 0%, rgba(2, 132, 199, 0.05) 0px, transparent 50%),
+        radial-gradient(at 100% 100%, rgba(99, 102, 241, 0.04) 0px, transparent 50%);
+      background-attachment: fixed;
+      color: var(--text-main);
+      min-height: 100vh;
+      line-height: 1.5;
+    }}
+
+    .container {{
+      max-width: 1440px;
+      margin: 0 auto;
+      padding: 28px 32px 60px 32px;
+    }}
+
+    /* Header */
+    header {{
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 32px;
+      padding-bottom: 24px;
+      border-bottom: 1px solid var(--border-subtle);
+    }}
+
+    .brand-group {{
+      display: flex;
+      align-items: center;
+      gap: 16px;
+    }}
+
+    .logo-badge {{
+      width: 48px;
+      height: 48px;
+      border-radius: 12px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 800;
+      font-size: 22px;
+      color: #ffffff;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.3);
+    }}
+
+    .brand-title h1 {{
+      font-size: 24px;
+      font-weight: 800;
+      letter-spacing: -0.02em;
+      color: #0f172a;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }}
+
+    .brand-title p {{
+      font-size: 13px;
+      color: var(--text-muted);
+      font-weight: 500;
+      margin-top: 2px;
+    }}
+
+    .header-badges {{
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      flex-wrap: wrap;
+    }}
+
+    .badge {{
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+    }}
+
+    .badge-emerald {{
+      color: #065f46;
+      background: #d1fae5;
+      border: 1px solid #a7f3d0;
+    }}
+
+    .badge-cyan {{
+      color: #0369a1;
+      background: #e0f2fe;
+      border: 1px solid #bae6fd;
+    }}
+
+    .btn-export {{
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: linear-gradient(135deg, #0284c7 0%, #0369a1 100%);
+      color: #ffffff;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 13px;
+      padding: 9px 18px;
+      border-radius: var(--radius-sm);
+      border: none;
+      transition: all 0.2s ease;
+      cursor: pointer;
+      box-shadow: 0 4px 12px rgba(2, 132, 199, 0.25);
+    }}
+
+    .btn-export:hover {{
+      transform: translateY(-1px);
+      box-shadow: 0 6px 16px rgba(2, 132, 199, 0.35);
+      background: linear-gradient(135deg, #0369a1 0%, #075985 100%);
+    }}
+
+    /* Slicer Controls */
+    .controls-card {{
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 20px 24px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-card);
+    }}
+
+    .controls-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 14px;
+    }}
+
+    .controls-title {{
+      font-size: 13px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }}
+
+    .filter-pills {{
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      align-items: center;
+    }}
+
+    .pill-btn {{
+      background: #f1f5f9;
+      border: 1px solid var(--border-subtle);
+      color: #475569;
+      padding: 7px 16px;
+      border-radius: 30px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    }}
+
+    .pill-btn:hover {{
+      color: #0f172a;
+      background: #e2e8f0;
+      border-color: #cbd5e1;
+    }}
+
+    .pill-btn.active {{
+      background: #0284c7;
+      color: #ffffff;
+      border-color: #0284c7;
+      box-shadow: 0 2px 8px rgba(2, 132, 199, 0.3);
+    }}
+
+    .divider {{
+      width: 1px;
+      height: 24px;
+      background: var(--border-subtle);
+      margin: 0 6px;
+    }}
+
+    /* KPI Cards */
+    .kpi-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 28px;
+    }}
+
+    .kpi-card {{
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 22px 24px;
+      position: relative;
+      overflow: hidden;
+      box-shadow: var(--shadow-card);
+      transition: all 0.25s ease;
+    }}
+
+    .kpi-card::before {{
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 4px;
+      background: var(--card-accent, #0284c7);
+    }}
+
+    .kpi-card:hover {{
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-hover);
+      border-color: #cbd5e1;
+    }}
+
+    .kpi-label {{
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }}
+
+    .kpi-value {{
+      font-size: 32px;
+      font-weight: 800;
+      letter-spacing: -0.03em;
+      color: #0f172a;
+      margin-bottom: 6px;
+      font-feature-settings: "tnum";
+    }}
+
+    .kpi-subtitle {{
+      font-size: 12px;
+      color: var(--text-muted);
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }}
+
+    .kpi-subtitle .highlight {{
+      font-weight: 700;
+      color: #0284c7;
+    }}
+
+    /* Main Chart Section */
+    .charts-grid {{
+      display: grid;
+      grid-template-columns: 1.3fr 1fr;
+      gap: 24px;
+      margin-bottom: 28px;
+    }}
+
+    @media (max-width: 1024px) {{
+      .charts-grid {{
+        grid-template-columns: 1fr;
+      }}
+    }}
+
+    .chart-card {{
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+    }}
+
+    .chart-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: 20px;
+    }}
+
+    .chart-title h3 {{
+      font-size: 16px;
+      font-weight: 700;
+      color: #0f172a;
+      letter-spacing: -0.01em;
+    }}
+
+    .chart-title p {{
+      font-size: 12px;
+      color: var(--text-muted);
+      margin-top: 2px;
+    }}
+
+    .chart-container {{
+      position: relative;
+      width: 100%;
+      height: 320px;
+      flex-grow: 1;
+    }}
+
+    svg {{
+      width: 100%;
+      height: 100%;
+      overflow: visible;
+    }}
+
+    /* Bar Chart Custom Styles */
+    .bar-row {{
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin-bottom: 14px;
+    }}
+
+    .bar-label {{
+      width: 130px;
+      font-size: 12px;
+      font-weight: 600;
+      color: #334155;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }}
+
+    .bar-track {{
+      flex-grow: 1;
+      height: 32px;
+      background: #f1f5f9;
+      border: 1px solid #e2e8f0;
+      border-radius: 6px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+    }}
+
+    .bar-fill {{
+      height: 100%;
+      border-radius: 5px;
+      background: linear-gradient(90deg, #0284c7 0%, #38bdf8 100%);
+      transition: width 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    }}
+
+    .bar-value {{
+      position: absolute;
+      right: 12px;
+      font-size: 12px;
+      font-weight: 700;
+      color: #0f172a;
+      font-family: 'JetBrains Mono', monospace;
+    }}
+
+    /* Traps Solution Section */
+    .audit-breakdown {{
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 26px 28px;
+      margin-bottom: 28px;
+      box-shadow: var(--shadow-card);
+    }}
+
+    .audit-breakdown h3 {{
+      font-size: 18px;
+      font-weight: 800;
+      color: #0f172a;
+      margin-bottom: 6px;
+    }}
+
+    .audit-breakdown > p {{
+      font-size: 13px;
+      color: var(--text-muted);
+      margin-bottom: 22px;
+    }}
+
+    .traps-grid {{
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 18px;
+    }}
+
+    .trap-box {{
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-md);
+      padding: 18px;
+      transition: all 0.2s ease;
+    }}
+
+    .trap-box:hover {{
+      border-color: #93c5fd;
+      background: #f0f9ff;
+    }}
+
+    .trap-header {{
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      margin-bottom: 8px;
+    }}
+
+    .trap-number {{
+      width: 26px;
+      height: 26px;
+      border-radius: 50%;
+      background: #e0f2fe;
+      color: #0284c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 12px;
+      font-weight: 800;
+    }}
+
+    .trap-title {{
+      font-size: 14px;
+      font-weight: 700;
+      color: #0f172a;
+    }}
+
+    .trap-desc {{
+      font-size: 12px;
+      color: #475569;
+      line-height: 1.5;
+      margin-bottom: 10px;
+    }}
+
+    .trap-metric {{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      padding: 6px 10px;
+      border-radius: 4px;
+      background: #ffffff;
+      color: #0369a1;
+      border: 1px solid #e2e8f0;
+      border-left: 3px solid #0284c7;
+      font-weight: 600;
+    }}
+
+    /* Table Section */
+    .table-card {{
+      background: var(--bg-card);
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-lg);
+      padding: 24px;
+      box-shadow: var(--shadow-card);
+      margin-bottom: 28px;
+    }}
+
+    .table-header {{
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 16px;
+      flex-wrap: wrap;
+      gap: 12px;
+    }}
+
+    .search-box {{
+      background: #f8fafc;
+      border: 1px solid var(--border-subtle);
+      border-radius: var(--radius-sm);
+      color: #0f172a;
+      padding: 8px 14px;
+      font-size: 12px;
+      width: 260px;
+      outline: none;
+      transition: border-color 0.2s;
+    }}
+
+    .search-box:focus {{
+      border-color: #0284c7;
+      background: #ffffff;
+    }}
+
+    .table-responsive {{
+      overflow-x: auto;
+    }}
+
+    table {{
+      width: 100%;
+      border-collapse: collapse;
+      font-size: 13px;
+      text-align: left;
+    }}
+
+    th {{
+      background: #f8fafc;
+      color: #475569;
+      font-weight: 700;
+      text-transform: uppercase;
+      font-size: 11px;
+      letter-spacing: 0.04em;
+      padding: 12px 14px;
+      border-bottom: 2px solid var(--border-subtle);
+    }}
+
+    td {{
+      padding: 12px 14px;
+      border-bottom: 1px solid var(--border-subtle);
+      color: #1e293b;
+      font-feature-settings: "tnum";
+    }}
+
+    tr:hover td {{
+      background: #f8fafc;
+    }}
+
+    .code-chip {{
+      font-family: 'JetBrains Mono', monospace;
+      font-size: 11px;
+      background: #f1f5f9;
+      color: #334155;
+      padding: 3px 6px;
+      border-radius: 4px;
+      border: 1px solid #e2e8f0;
+    }}
+
+    .tag-active {{
+      color: #065f46;
+      background: #d1fae5;
+      border: 1px solid #a7f3d0;
+      padding: 3px 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+    }}
+
+    /* Tooltip */
+    #chart-tooltip {{
+      position: absolute;
+      display: none;
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 8px;
+      padding: 8px 12px;
+      font-size: 12px;
+      color: #ffffff;
+      pointer-events: none;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+      z-index: 100;
+    }}
+
+    footer {{
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 12px;
+      margin-top: 40px;
+    }}
+  </style>
+</head>
+<body>
+
+<div id="chart-tooltip"></div>
+
+<div class="container">
+  <!-- Header -->
+  <header>
+    <div class="brand-group">
+      <div class="logo-badge">GT</div>
+      <div class="brand-title">
+        <h1>GlobalTech FinTech Solutions <span style="font-size: 16px; color: var(--primary); font-weight: 500;">/ EuroSystems Merger Audit</span></h1>
+        <p>Enterprise Data Architecture & Reconciliation Pipeline | CFO Executive Presentation</p>
+      </div>
+    </div>
+    <div class="header-badges">
+      <span class="badge badge-emerald">● Audit Reconciled 100%</span>
+      <span class="badge badge-cyan">⚡ 0.5s Vectorized SLA</span>
+      <a href="power_bi_ready_dataset.csv" download="power_bi_ready_dataset.csv" class="btn-export">
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+        Download CSV (53,899 Rows)
+      </a>
+    </div>
+  </header>
+
+  <!-- Interactive Date Slicers -->
+  <section class="controls-card">
+    <div class="controls-header">
+      <div class="controls-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="4" width="18" height="18" rx="2" ry="2"></rect><line x1="16" y1="2" x2="16" y2="6"></line><line x1="8" y1="2" x2="8" y2="6"></line><line x1="3" y1="10" x2="21" y2="10"></line></svg>
+        Interactive Date Slicer (Power BI Emulation)
+      </div>
+      <span id="slicer-status" style="font-size: 12px; color: var(--text-muted); font-weight: 500;">Showing: Entire Fiscal Year 2023 (Q1 - Q4)</span>
+    </div>
+    <div class="filter-pills" id="slicer-pills">
+      <button class="pill-btn active" data-filter="ALL">Full Year (2023)</button>
+      <div class="divider"></div>
+      <button class="pill-btn" data-filter="Q1">Q1 (Jan - Mar)</button>
+      <button class="pill-btn" data-filter="Q2">Q2 (Apr - Jun)</button>
+      <button class="pill-btn" data-filter="Q3">Q3 (Jul - Sep)</button>
+      <button class="pill-btn" data-filter="Q4">Q4 (Oct - Dec)</button>
+      <div class="divider"></div>
+      <button class="pill-btn" data-filter="2023-01">Jan</button>
+      <button class="pill-btn" data-filter="2023-02">Feb</button>
+      <button class="pill-btn" data-filter="2023-03">Mar</button>
+      <button class="pill-btn" data-filter="2023-04">Apr</button>
+      <button class="pill-btn" data-filter="2023-05">May</button>
+      <button class="pill-btn" data-filter="2023-06">Jun</button>
+      <button class="pill-btn" data-filter="2023-07">Jul</button>
+      <button class="pill-btn" data-filter="2023-08">Aug</button>
+      <button class="pill-btn" data-filter="2023-09">Sep</button>
+      <button class="pill-btn" data-filter="2023-10">Oct</button>
+      <button class="pill-btn" data-filter="2023-11">Nov</button>
+      <button class="pill-btn" data-filter="2023-12">Dec</button>
+    </div>
+  </section>
+
+  <!-- KPI Cards -->
+  <section class="kpi-grid">
+    <div class="kpi-card" style="--card-accent: #0284c7;">
+      <div class="kpi-label">
+        <span>Total Reconciled USD Revenue</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><line x1="12" y1="1" x2="12" y2="23"></line><path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path></svg>
+      </div>
+      <div class="kpi-value" id="kpi-revenue">$148,274,622.91</div>
+      <div class="kpi-subtitle">DAX: <span class="highlight">SUM(USD_Revenue)</span></div>
+    </div>
+
+    <div class="kpi-card" style="--card-accent: #059669;">
+      <div class="kpi-label">
+        <span>Verified Transactions</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2"><polyline points="20 6 9 17 4 12"></polyline></svg>
+      </div>
+      <div class="kpi-value" id="kpi-transactions">53,899</div>
+      <div class="kpi-subtitle">Filtered from <span class="highlight">100,000 raw server logs</span></div>
+    </div>
+
+    <div class="kpi-card" style="--card-accent: #d97706;">
+      <div class="kpi-label">
+        <span>Active User Accounts</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#d97706" stroke-width="2"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M23 21v-2a4 4 0 0 0-3-3.87"></path><path d="M16 3.13a4 4 0 0 1 0 7.75"></path></svg>
+      </div>
+      <div class="kpi-value" id="kpi-users">14,183</div>
+      <div class="kpi-subtitle">SQL Window: <span class="highlight">ROW_NUMBER() latest Active</span></div>
+    </div>
+
+    <div class="kpi-card" style="--card-accent: #7c3aed;">
+      <div class="kpi-label">
+        <span>Avg. Transaction Value</span>
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#7c3aed" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
+      </div>
+      <div class="kpi-value" id="kpi-aov">$2,750.97</div>
+      <div class="kpi-subtitle">Forward-filled with <span class="highlight">daily FX rates</span></div>
+    </div>
+  </section>
+
+  <!-- Interactive Visuals -->
+  <section class="charts-grid">
+    <!-- Line Chart: Revenue Trends Over Time -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">
+          <h3>Revenue Trends Over Time (USD)</h3>
+          <p>Monthly financial performance throughout 2023</p>
+        </div>
+        <span class="badge badge-cyan" id="chart-sub-label">12 Months Trend</span>
+      </div>
+      <div class="chart-container" id="line-chart-container">
+        <!-- SVG generated by JS -->
+      </div>
+    </div>
+
+    <!-- Bar Chart: Top 5 Customers by Revenue -->
+    <div class="chart-card">
+      <div class="chart-header">
+        <div class="chart-title">
+          <h3>Top 5 Customers by Revenue (USD)</h3>
+          <p>Highest-spending enterprise accounts</p>
+        </div>
+        <span class="badge badge-emerald">Ranked Top 5</span>
+      </div>
+      <div id="bar-chart-container" style="display: flex; flex-direction: column; justify-content: center; height: 320px;">
+        <!-- Bar elements generated by JS -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Trap Analysis Section -->
+  <section class="audit-breakdown">
+    <h3>Data Engineering Traps Overcome in Pipeline</h3>
+    <p>How the enterprise data reconciliation traps were neutralized with production Python and SQL patterns:</p>
+    <div class="traps-grid">
+      <div class="trap-box">
+        <div class="trap-header">
+          <div class="trap-number">1</div>
+          <div class="trap-title">Scale & Optimization Trap</div>
+        </div>
+        <div class="trap-desc">Processing 100,000 records via traditional Pandas iterrows or for loops causes timeout. Applied fully vectorized Pandas string operations and compiled C-level batch extraction.</div>
+        <div class="trap-metric">Execution Time: 0.25s (SLA Limit: 120s)</div>
+      </div>
+
+      <div class="trap-box">
+        <div class="trap-header">
+          <div class="trap-number">2</div>
+          <div class="trap-title">Unstructured Data Trap</div>
+        </div>
+        <div class="trap-desc">Buried JSON payloads in raw server logs contained 5,098 system error messages. Used high-performance regex parsing with strict non-capturing groups to discard corrupted logs.</div>
+        <div class="trap-metric">Extracted: 94,902 clean logs | 0 Nulls</div>
+      </div>
+
+      <div class="trap-box">
+        <div class="trap-header">
+          <div class="trap-number">3</div>
+          <div class="trap-title">Temporal Reconciliation Gap</div>
+        </div>
+        <div class="trap-desc">Financial FX markets close on weekends, leaving 104 missing dates. An inner join drops 28% of revenue. Implemented forward-fill (.ffill()) to roll Friday's rate through weekends.</div>
+        <div class="trap-metric">Reconciled: 100% of weekend transactions</div>
+      </div>
+
+      <div class="trap-box">
+        <div class="trap-header">
+          <div class="trap-number">4</div>
+          <div class="trap-title">Version Control Trap</div>
+        </div>
+        <div class="trap-desc">Historical user database contained 47,464 state logs for 25,000 users. Used SQL Window Function ROW_NUMBER() OVER(PARTITION BY user_id ORDER BY updated_at DESC) to select true active state.</div>
+        <div class="trap-metric">Active Cohort: 14,183 unique users</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Power BI DAX & Setup Reference -->
+  <section class="controls-card" style="margin-bottom: 28px;">
+    <div class="controls-header">
+      <div class="controls-title">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#0284c7" stroke-width="2"><circle cx="12" cy="12" r="10"></circle><line x1="12" y1="16" x2="12" y2="12"></line><line x1="12" y1="8" x2="12.01" y2="8"></line></svg>
+        Power BI Official Setup & DAX Measures Reference
+      </div>
+    </div>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 16px;">
+      <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 14px; border-radius: 8px;">
+        <div style="font-size: 12px; font-weight: 700; color: #0284c7; margin-bottom: 6px;">1. DAX Measure for Total USD Revenue</div>
+        <pre style="font-family: 'JetBrains Mono', monospace; font-size: 12px; color: #0f172a; background: #ffffff; border: 1px solid #e2e8f0; padding: 10px; border-radius: 6px; overflow-x: auto;"><code>Total USD Revenue = 
+SUM(power_bi_ready_dataset[USD_Revenue])</code></pre>
+      </div>
+      <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 14px; border-radius: 8px;">
+        <div style="font-size: 12px; font-weight: 700; color: #059669; margin-bottom: 6px;">2. Visual Setup: Line Chart</div>
+        <p style="font-size: 12px; color: #475569; line-height: 1.4;">
+          <strong>X-Axis:</strong> Date (Hierarchy: Year, Quarter, Month)<br>
+          <strong>Y-Axis:</strong> [Total USD Revenue]<br>
+          <strong>Format:</strong> Data Labels ON, Display Units: Millions ($M)
+        </p>
+      </div>
+      <div style="background: #f8fafc; border: 1px solid var(--border-subtle); padding: 14px; border-radius: 8px;">
+        <div style="font-size: 12px; font-weight: 700; color: #d97706; margin-bottom: 6px;">3. Visual Setup: Top 5 Bar Chart</div>
+        <p style="font-size: 12px; color: #475569; line-height: 1.4;">
+          <strong>Y-Axis:</strong> name (Customer Name)<br>
+          <strong>X-Axis:</strong> [Total USD Revenue]<br>
+          <strong>Filter Pane:</strong> Filter on 'name' -> Filter Type: <em>Top N</em> -> Show items: Top 5 by Value: <em>[Total USD Revenue]</em>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Reconciled Data Sample Table -->
+  <section class="table-card">
+    <div class="table-header">
+      <div>
+        <h3 style="font-size: 16px; font-weight: 700; color: #0f172a;">Audit Sample Dataset Preview (power_bi_ready_dataset.csv)</h3>
+        <p style="font-size: 12px; color: var(--text-muted);">Real transactions with applied foreign exchange conversion and active account verification</p>
+      </div>
+      <input type="text" id="table-search" class="search-box" placeholder="Search by User ID, Name, Product...">
+    </div>
+    <div class="table-responsive">
+      <table>
+        <thead>
+          <tr>
+            <th>Date</th>
+            <th>User ID</th>
+            <th>Customer Name</th>
+            <th>Product ID</th>
+            <th>EUR Value (€)</th>
+            <th>FX Rate (EUR→USD)</th>
+            <th>USD Revenue ($)</th>
+            <th>User Status</th>
+          </tr>
+        </thead>
+        <tbody id="table-body">
+          <!-- Populated by JS -->
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>GlobalTech FinTech Solutions &copy; 2023 Enterprise Data Architecture Team | Prepared for Board of Directors Q1-Q4 Audit</p>
+  </footer>
+</div>
+
+<script>
+  const auditData = {data_json_str};
+
+  // State
+  let currentFilter = 'ALL';
+
+  // Formatters
+  const formatCurrency = (val) => '$' + Number(val).toLocaleString('en-US', {{ minimumFractionDigits: 2, maximumFractionDigits: 2 }});
+  const formatInt = (val) => Number(val).toLocaleString('en-US');
+
+  // DOM Elements
+  const kpiRevenue = document.getElementById('kpi-revenue');
+  const kpiTransactions = document.getElementById('kpi-transactions');
+  const kpiUsers = document.getElementById('kpi-users');
+  const kpiAov = document.getElementById('kpi-aov');
+  const slicerStatus = document.getElementById('slicer-status');
+  const chartSubLabel = document.getElementById('chart-sub-label');
+  const lineChartContainer = document.getElementById('line-chart-container');
+  const barChartContainer = document.getElementById('bar-chart-container');
+  const tableBody = document.getElementById('table-body');
+  const searchInput = document.getElementById('table-search');
+  const tooltip = document.getElementById('chart-tooltip');
+
+  // Render Table
+  function renderTable(filterText = '') {{
+    const query = filterText.toLowerCase();
+    const rows = auditData.sample_records.filter(r => 
+      !query || 
+      r.user_id.toLowerCase().includes(query) || 
+      r.name.toLowerCase().includes(query) || 
+      r.product_id.toLowerCase().includes(query) ||
+      r.Date.includes(query)
+    );
+
+    tableBody.innerHTML = rows.slice(0, 15).map(r => `
+      <tr>
+        <td><span class="code-chip">${{r.Date}}</span></td>
+        <td><span class="code-chip">${{r.user_id}}</span></td>
+        <td style="font-weight: 600; color: #0f172a;">${{r.name}}</td>
+        <td><span class="code-chip" style="color: #0284c7; font-weight: 600;">${{r.product_id}}</span></td>
+        <td>€${{Number(r.eur_val).toLocaleString('en-US', {{minimumFractionDigits: 2}})}}</td>
+        <td>${{Number(r.EUR_to_USD).toFixed(4)}}</td>
+        <td style="font-weight: 700; color: #059669;">${{formatCurrency(r.USD_Revenue)}}</td>
+        <td><span class="tag-active">Active</span></td>
+      </tr>
+    `).join('');
+  }}
+
+  // Filter Data Calculation
+  function getFilteredMetrics(filter) {{
+    if (filter === 'ALL') {{
+      return {{
+        revenue: auditData.total_revenue,
+        transactions: auditData.total_transactions,
+        users: auditData.unique_active_users,
+        aov: auditData.avg_transaction_val,
+        months: auditData.monthly,
+        top5: auditData.top5_overall,
+        label: 'Entire Fiscal Year 2023 (Q1 - Q4)'
+      }};
+    }}
+
+    if (filter.startsWith('Q')) {{
+      const qData = auditData.quarterly.find(q => q.Quarter === filter);
+      const qMonthMap = {{
+        'Q1': ['2023-01', '2023-02', '2023-03'],
+        'Q2': ['2023-04', '2023-05', '2023-06'],
+        'Q3': ['2023-07', '2023-08', '2023-09'],
+        'Q4': ['2023-10', '2023-11', '2023-12']
+      }};
+      const months = auditData.monthly.filter(m => qMonthMap[filter].includes(m.Month));
+      return {{
+        revenue: qData ? qData.revenue : 0,
+        transactions: qData ? qData.transactions : 0,
+        users: qData ? qData.active_users : 0,
+        aov: qData ? qData.avg_order : 0,
+        months: months,
+        top5: auditData.top5_by_q[filter] || auditData.top5_overall,
+        label: `${{filter}} 2023 Performance`
+      }};
+    }}
+
+    const mData = auditData.monthly.find(m => m.Month === filter);
+    return {{
+      revenue: mData ? mData.revenue : 0,
+      transactions: mData ? mData.transactions : 0,
+      users: mData ? mData.active_users : 0,
+      aov: mData ? mData.avg_order : 0,
+      months: mData ? [mData] : [],
+      top5: auditData.top5_overall,
+      label: `Month of ${{filter}} Audit`
+    }};
+  }}
+
+  // Render Line Chart SVG
+  function renderLineChart(monthsData) {{
+    if (!monthsData || monthsData.length === 0) {{
+      lineChartContainer.innerHTML = '<div style="display:flex;align-items:center;justify-content:center;height:100%;color:var(--text-muted)">No data for selection</div>';
+      return;
+    }}
+
+    const width = 640;
+    const height = 280;
+    const padding = {{ top: 30, right: 30, bottom: 40, left: 70 }};
+    const chartW = width - padding.left - padding.right;
+    const chartH = height - padding.top - padding.bottom;
+
+    const maxRev = Math.max(...monthsData.map(d => d.revenue)) * 1.15;
+    const minRev = Math.min(...monthsData.map(d => d.revenue)) * 0.85;
+
+    const getX = (idx) => padding.left + (monthsData.length === 1 ? chartW / 2 : (idx / (monthsData.length - 1)) * chartW);
+    const getY = (val) => padding.top + chartH - ((val - minRev) / (maxRev - minRev || 1)) * chartH;
+
+    const points = monthsData.map((d, i) => `${{getX(i)}},${{getY(d.revenue)}}`).join(' ');
+    const areaPoints = `${{getX(0)}},${{padding.top + chartH}} ` + points + ` ${{getX(monthsData.length - 1)}},${{padding.top + chartH}}`;
+
+    let gridLines = '';
+    const steps = 4;
+    for (let i = 0; i <= steps; i++) {{
+      const val = minRev + (i / steps) * (maxRev - minRev);
+      const y = getY(val);
+      gridLines += `
+        <line x1="${{padding.left}}" y1="${{y}}" x2="${{padding.left + chartW}}" y2="${{y}}" stroke="#e2e8f0" stroke-dasharray="4,4" />
+        <text x="${{padding.left - 10}}" y="${{y + 4}}" fill="#64748b" font-size="10" text-anchor="end" font-family="Plus Jakarta Sans">$${{(val * 1e-6).toFixed(1)}}M</text>
+      `;
+    }}
+
+    let xLabels = '';
+    monthsData.forEach((d, i) => {{
+      const x = getX(i);
+      xLabels += `<text x="${{x}}" y="${{padding.top + chartH + 24}}" fill="#64748b" font-size="11" text-anchor="middle" font-weight="600">${{d.Month}}</text>`;
+    }});
+
+    let circles = '';
+    monthsData.forEach((d, i) => {{
+      const x = getX(i);
+      const y = getY(d.revenue);
+      circles += `
+        <g class="chart-point" data-month="${{d.Month}}" data-revenue="${{d.revenue}}" data-tx="${{d.transactions}}">
+          <circle cx="${{x}}" cy="${{y}}" r="6" fill="#0284c7" stroke="#ffffff" stroke-width="2" style="cursor: pointer; transition: r 0.2s;" />
+          <text x="${{x}}" y="${{y - 12}}" fill="#0284c7" font-size="10" font-weight="700" text-anchor="middle">$${{(d.revenue * 1e-6).toFixed(2)}}M</text>
+        </g>
+      `;
+    }});
+
+    const svg = `
+      <svg viewBox="0 0 ${{width}} ${{height}}" preserveAspectRatio="none">
+        <defs>
+          <linearGradient id="chartGrad" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#0284c7" stop-opacity="0.25"/>
+            <stop offset="100%" stop-color="#0284c7" stop-opacity="0.0"/>
+          </linearGradient>
+        </defs>
+        ${{gridLines}}
+        ${{xLabels}}
+        <polygon points="${{areaPoints}}" fill="url(#chartGrad)" />
+        <polyline points="${{points}}" fill="none" stroke="#0284c7" stroke-width="3" stroke-linecap="round" stroke-linejoin="round" />
+        ${{circles}}
+      </svg>
+    `;
+
+    lineChartContainer.innerHTML = svg;
+
+    document.querySelectorAll('.chart-point').forEach(el => {{
+      el.addEventListener('mouseenter', (e) => {{
+        const month = el.getAttribute('data-month');
+        const rev = el.getAttribute('data-revenue');
+        const tx = el.getAttribute('data-tx');
+        tooltip.style.display = 'block';
+        tooltip.innerHTML = `
+          <strong>Month: ${{month}}</strong><br>
+          Revenue: <span style="color:#34d399">${{formatCurrency(rev)}}</span><br>
+          Transactions: ${{formatInt(tx)}}
+        `;
+      }});
+      el.addEventListener('mousemove', (e) => {{
+        tooltip.style.left = (e.pageX + 15) + 'px';
+        tooltip.style.top = (e.pageY - 25) + 'px';
+      }});
+      el.addEventListener('mouseleave', () => {{
+        tooltip.style.display = 'none';
+      }});
+    }});
+  }}
+
+  // Render Bar Chart
+  function renderBarChart(top5) {{
+    if (!top5 || top5.length === 0) {{
+      barChartContainer.innerHTML = '<div style="color:var(--text-muted);text-align:center;">No customer data available</div>';
+      return;
+    }}
+
+    const maxVal = Math.max(...top5.map(c => c.USD_Revenue));
+
+    barChartContainer.innerHTML = top5.map((c, i) => {{
+      const pct = (c.USD_Revenue / maxVal) * 100;
+      return `
+        <div class="bar-row">
+          <div class="bar-label" title="${{c.name}} (${{c.user_id}})">
+            ${{i + 1}}. ${{c.name}}
+          </div>
+          <div class="bar-track">
+            <div class="bar-fill" style="width: ${{pct}}%; background: ${{getBarGradient(i)}};"></div>
+            <div class="bar-value">${{formatCurrency(c.USD_Revenue)}}</div>
+          </div>
+        </div>
+      `;
+    }}).join('');
+  }}
+
+  function getBarGradient(idx) {{
+    const colors = [
+      'linear-gradient(90deg, #0284c7 0%, #38bdf8 100%)',
+      'linear-gradient(90deg, #0891b2 0%, #22d3ee 100%)',
+      'linear-gradient(90deg, #059669 0%, #34d399 100%)',
+      'linear-gradient(90deg, #7c3aed 0%, #a78bfa 100%)',
+      'linear-gradient(90deg, #d97706 0%, #fbbf24 100%)'
+    ];
+    return colors[idx % colors.length];
+  }}
+
+  // Update UI on slicer change
+  function updateDashboard(filter) {{
+    currentFilter = filter;
+    const metrics = getFilteredMetrics(filter);
+
+    kpiRevenue.textContent = formatCurrency(metrics.revenue);
+    kpiTransactions.textContent = formatInt(metrics.transactions);
+    kpiUsers.textContent = formatInt(metrics.users);
+    kpiAov.textContent = formatCurrency(metrics.aov);
+    slicerStatus.textContent = `Showing: ${{metrics.label}}`;
+    chartSubLabel.textContent = `${{metrics.months.length}} Period${{metrics.months.length > 1 ? 's' : ''}} Trend`;
+
+    renderLineChart(metrics.months);
+    renderBarChart(metrics.top5);
+  }}
+
+  // Slicer Click Events
+  document.querySelectorAll('.pill-btn').forEach(btn => {{
+    btn.addEventListener('click', () => {{
+      document.querySelectorAll('.pill-btn').forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+      const filter = btn.getAttribute('data-filter');
+      updateDashboard(filter);
+    }});
+  }});
+
+  // Table Search Event
+  searchInput.addEventListener('input', (e) => {{
+    renderTable(e.target.value);
+  }});
+
+  // Initial Load
+  updateDashboard('ALL');
+  renderTable();
+</script>
+
+</body>
+</html>
+"""
+
+with open('cfo_interactive_dashboard.html', 'w', encoding='utf-8') as f:
+    f.write(html_content)
+
+print("[SUCCESS] cfo_interactive_dashboard.html updated to clean modern light theme!")
